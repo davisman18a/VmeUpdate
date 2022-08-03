@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "992596722356",
+    "project_id": "volunteerme-app",
+    "storage_bucket": "volunteerme-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992596722356:android:8585482e0143a3f3370de1",
+        "android_client_info": {
+          "package_name": "com.example.volunteerme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992596722356-qg57ijk1odp33asp6q7vi2a0t3m8jtqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.volunteerme",
+            "certificate_hash": "fc33a88a42db1fb73fcc9ffa020dfd3276d7940b"
+          }
+        },
+        {
+          "client_id": "992596722356-viob6rt2f1nu8ns323d4liibjfq0rcbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBenGRMlfnZmZPUWzsth7AgppPvoNYc3bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992596722356-viob6rt2f1nu8ns323d4liibjfq0rcbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
