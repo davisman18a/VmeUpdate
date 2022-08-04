@@ -59,20 +59,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 messages = new ArrayList<>();
-                for (DocumentSnapshot document : value.getDocuments())
-                {
-                    try {
-                        chatMessage m = new chatMessage(
-                                document.get("photo").toString(),
-                                document.get("username").toString(),
-                                document.get("userid").toString(),
-                                document.get("message").toString()
-                        );
-                        messages.add(m);
-                    } catch (Exception e) {
+                if (value != null) {
+                    for (DocumentSnapshot document : value.getDocuments()) {
+                        try {
+                            chatMessage m = new chatMessage(
+                                    document.get("photo").toString(),
+                                    document.get("username").toString(),
+                                    document.get("userid").toString(),
+                                    document.get("message").toString()
+                            );
+                            messages.add(m);
+                        } catch (Exception e) {
+                        }
                     }
+                    notifyDataSetChanged();
                 }
-                notifyDataSetChanged();
             }
         });
 

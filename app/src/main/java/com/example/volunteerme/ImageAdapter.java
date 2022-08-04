@@ -17,7 +17,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
     private List<String> images;
 
-    public ImageAdapter() {
+    public ImageAdapter()
+    {
         images = new ArrayList<String>();
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         storageRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
@@ -60,14 +61,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), FullImageActivity.class);
-                i.putExtra("image", image);
+                Intent i = new Intent(view.getContext(),FullImageActivity.class);
+                i.putExtra("image",image);
                 ActivityOptionsCompat options =
                         ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) view.getContext(),
                                 holder.image,
-                                "imageTransition"
+                                "imageTrasnition"
                         );
-                view.getContext().startActivity(i, options.toBundle());
+                view.getContext().startActivity(i,options.toBundle());
             }
         });
     }
@@ -75,6 +76,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     @Override
     public int getItemCount() {
         return images.size();
+    }
+
+    public void addPicture(String path) {
+        images.add(path);
+        notifyDataSetChanged();
+        Uri file = Uri.fromFile(new File(path));
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        storageRef.child(file.getLastPathSegment()).putFile(file);
     }
 }
 
