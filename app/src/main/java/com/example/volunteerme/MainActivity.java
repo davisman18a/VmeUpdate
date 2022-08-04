@@ -21,6 +21,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 777;
+    private static GoogleSignInAccount account;
     private FirebaseAnalytics mFirebaseAnalytics;
     private GoogleSignInClient mGoogleSignInClient;
     VolunteersAdapter adapter;
@@ -62,16 +63,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            account = completedTask.getResult(ApiException.class);
 
 
             Intent i = new Intent(MainActivity.this, MainActivity3.class);
-            i.putExtra("user",account);
+
             startActivity(i);
+
         } catch (ApiException e) {
 
         }
     }
+    public static GoogleSignInAccount GoogleSignInAccount1(){
+        return account;
+    }
+
 
 
 

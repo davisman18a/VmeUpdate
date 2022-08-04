@@ -61,22 +61,21 @@ public class Organization_info extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        GoogleSignInAccount account = MainActivity.GoogleSignInAccount1();
 
         Button btn1 = findViewById(R.id.contactusbtn);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
 
-                    Intent i = new Intent(Organization_info.this, ChatActivity.class);
-                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(i);
-                    i.putExtra("user", task.getResult(ApiException.class));
+                    Intent i = new Intent(view.getContext(), ChatActivity.class);
+
+                i.putExtra("user",account);
                     startActivity(i);
-                } catch (ApiException e) {
 
-                }
             }
         });
     }
+
 }

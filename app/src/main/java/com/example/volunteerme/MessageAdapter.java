@@ -26,9 +26,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     private List<chatMessage> messages = new ArrayList<>();
 
-    public MessageAdapter() {
+    private String userID;
+
+    public MessageAdapter(String id) {
+        userID = id;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("chat")
+        db.collection("chats")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -39,9 +42,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                             {
                                 try {
                                     chatMessage m = new chatMessage(
-                                            document.get("userPhoto").toString(),
-                                            document.get("userName").toString(),
-                                            document.get("userID").toString(),
+                                            document.get("photo").toString(),
+                                            document.get("username").toString(),
+                                            document.get("userid").toString(),
                                             document.get("message").toString()
                                     );
                                     messages.add(m);
@@ -52,7 +55,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                         }
                     }
                 });
-        db.collection("chat").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("chats").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 messages = new ArrayList<>();
@@ -60,9 +63,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                 {
                     try {
                         chatMessage m = new chatMessage(
-                                document.get("userPhoto").toString(),
-                                document.get("userName").toString(),
-                                document.get("userID").toString(),
+                                document.get("photo").toString(),
+                                document.get("username").toString(),
+                                document.get("userid").toString(),
                                 document.get("message").toString()
                         );
                         messages.add(m);
@@ -86,9 +89,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         chatMessage message = messages.get(position);
-        holder.message.setText(message.message);
-        holder.userName.setText(message.userName);
-        Glide.with(holder.userImage.getContext()).load(message.userPhoto).into(holder.userImage);
+        if (message.userID.equals(userID)) {
+            holder.messageCard.setVisibility(View.GONE);
+            holder.messageCard_m.setVisibility(View.VISIBLE);
+            holder.message_m.setText(message.message);
+            holder.userName_m.setText(message.userName);
+            Glide.with(holder.userImage_m.getContext()).load(message.userPhoto).into(holder.userImage_m);
+        } else {
+            holder.messageCard_m.setVisibility(View.GONE);
+            holder.messageCard.setVisibility(View.VISIBLE);
+            holder.message.setText(message.message);
+            holder.userName.setText(message.userName);
+            Glide.with(holder.userImage.getContext()).load(message.userPhoto).into(holder.userImage);
+        }
     }
 
     @Override
@@ -98,12 +111,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     public void addMessage(chatMessage m) {
         Map<String, Object> message = new HashMap<>();
-        message.put("userPhoto", m.userPhoto);
-        message.put("userName", m.userName);
-        message.put("userID", m.userID);
+        message.put("photo", m.userPhoto);
+        message.put("username", m.userName);
+        message.put("userid", m.userID);
         message.put("message",m.message);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("chat").document(String.valueOf(System.currentTimeMillis()))
+        db.collection("chats").document(String.valueOf(System.currentTimeMillis()))
                 .set(message);
     }
 }

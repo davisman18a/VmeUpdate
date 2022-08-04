@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.112" />
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/activity_apply.xml" value="0.1" />
+        <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/activity_chat.xml" value="0.1" />
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/activity_organization_info.xml" value="0.1" />
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/activity_pic.xml" value="0.1" />
+        <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/chat_message.xml" value="0.1" />
         <entry key="..\:/Users/Alua/Desktop/VolunteerMe/app/src/main/res/layout/image_item.xml" value="0.13722826086956522" />
       </map>
     </option>

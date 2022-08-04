@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "992596722356-qg57ijk1odp33asp6q7vi2a0t3m8jtqq.apps.googleusercontent.com",
+          "client_id": "992596722356-agsnbqadto7ul87f99p2ssaosob0s2jv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.volunteerme",
-            "certificate_hash": "fc33a88a42db1fb73fcc9ffa020dfd3276d7940b"
+            "certificate_hash": "e6d15ae64d7ff49e828ec1ea1bf5a700ced82483"
           }
         },
         {
