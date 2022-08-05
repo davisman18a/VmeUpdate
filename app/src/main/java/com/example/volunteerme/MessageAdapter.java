@@ -1,10 +1,12 @@
 package com.example.volunteerme;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -42,10 +44,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                             {
                                 try {
                                     chatMessage m = new chatMessage(
-                                            document.get("photo").toString(),
-                                            document.get("username").toString(),
-                                            document.get("userid").toString(),
-                                            document.get("message").toString()
+                                            SecurityHelper.Decrypt(document.get("photo").toString()),
+                                            SecurityHelper.Decrypt(document.get("username").toString()),
+                                            SecurityHelper.Decrypt(document.get("userid").toString()),
+                                            SecurityHelper.Decrypt(document.get("message").toString())
                                     );
                                     messages.add(m);
                                 } catch (Exception e) {
@@ -56,6 +58,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                     }
                 });
         db.collection("chats").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 messages = new ArrayList<>();
@@ -63,10 +66,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                     for (DocumentSnapshot document : value.getDocuments()) {
                         try {
                             chatMessage m = new chatMessage(
-                                    document.get("photo").toString(),
-                                    document.get("username").toString(),
-                                    document.get("userid").toString(),
-                                    document.get("message").toString()
+                                    SecurityHelper.Decrypt(document.get("photo").toString()),
+                                    SecurityHelper.Decrypt(document.get("username").toString()),
+                                    SecurityHelper.Decrypt(document.get("userid").toString()),
+                                    SecurityHelper.Decrypt(document.get("message").toString())
                             );
                             messages.add(m);
                         } catch (Exception e) {
@@ -110,12 +113,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         return messages.size();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addMessage(chatMessage m) {
         Map<String, Object> message = new HashMap<>();
-        message.put("photo", m.userPhoto);
-        message.put("username", m.userName);
-        message.put("userid", m.userID);
-        message.put("message",m.message);
+        message.put("photo", SecurityHelper.Encrypt(m.userPhoto));
+        message.put("username", SecurityHelper.Encrypt(m.userName));
+        message.put("userid", SecurityHelper.Encrypt(m.userID));
+        message.put("message",SecurityHelper.Encrypt(m.message));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("chats").document(String.valueOf(System.currentTimeMillis()))
                 .set(message);

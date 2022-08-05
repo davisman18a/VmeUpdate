@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerMe">
         <activity
+            android:name=".CommentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".PicActivity"
             android:exported="false" />
         <activity
@@ -32,9 +35,8 @@
         <activity
             android:name=".MainActivity3"
             android:exported="false" />
-
         <activity
-            android:name=".MainActivity2"
+            android:name=".OrganizationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

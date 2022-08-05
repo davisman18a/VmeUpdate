@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .requestIdToken("992596722356-viob6rt2f1nu8ns323d4liibjfq0rcbn.apps.googleusercontent.com")
+                .requestIdToken(BuildConfig.IDToken)
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);

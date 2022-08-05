@@ -4,22 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-
-import java.io.BufferedReader;
-import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Organization_info extends AppCompatActivity {
 
@@ -57,7 +47,7 @@ public class Organization_info extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), MainActivity2.class);
+                Intent i = new Intent(view.getContext(), OrganizationActivity.class);
                 startActivity(i);
             }
         });
@@ -69,7 +59,7 @@ public class Organization_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    Intent i = new Intent(view.getContext(), ChatActivity.class);
+                Intent i = new Intent(view.getContext(), ChatActivity.class);
 
                 i.putExtra("user",account);
                     startActivity(i);
