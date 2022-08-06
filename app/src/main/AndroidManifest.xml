@@ -3,6 +3,9 @@
     package="com.example.volunteerme">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -33,10 +36,10 @@
             android:name=".Volunteer_info"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".OrganizationActivity"
             android:exported="false" />
         <activity
-            android:name=".OrganizationActivity"
+            android:name=".VolunteerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

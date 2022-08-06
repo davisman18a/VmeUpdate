@@ -9,30 +9,27 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrganizationActivity extends AppCompatActivity {
+public class VolunteerActivity extends AppCompatActivity {
 
-    OrganizationsAdapter adapter;
+    VolunteersAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer);
+        setContentView(R.layout.activity_organization);
+
         DataPersistencyHelper.Context = getApplicationContext();
-        List<Organizations> organizations = DataPersistencyHelper.LoadData1();
+        List<Volunteers> volunteer = DataPersistencyHelper.LoadData();
 
-
-
-        RecyclerView recycler = findViewById(R.id.org_recycler);
+        RecyclerView recycler = findViewById(R.id.recycler);
         recycler.setHasFixedSize(false);
 
         RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(), 1);
         recycler.setLayoutManager(manager);
 
-        adapter = new OrganizationsAdapter(organizations);
+        adapter = new VolunteersAdapter(volunteer);
         recycler.setAdapter(adapter);
 
 
-
-
-    }
+        }
 }

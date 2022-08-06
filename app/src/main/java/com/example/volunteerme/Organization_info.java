@@ -47,7 +47,7 @@ public class Organization_info extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), OrganizationActivity.class);
+                Intent i = new Intent(view.getContext(), VolunteerActivity.class);
                 startActivity(i);
             }
         });

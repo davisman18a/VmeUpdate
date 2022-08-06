@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".OrganizationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".OrganizationActivity">
+        tools:context=".VolunteerActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/org_recycler"

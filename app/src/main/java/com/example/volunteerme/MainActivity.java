@@ -1,10 +1,7 @@
 package com.example.volunteerme;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             account = completedTask.getResult(ApiException.class);
 
 
-            Intent i = new Intent(MainActivity.this, MainActivity3.class);
+            Intent i = new Intent(MainActivity.this, OrganizationActivity.class);
 
             startActivity(i);
 
